@@ -1,0 +1,164 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('assets/bg.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+  
+  .game-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .sudoku-board {
+    border-collapse: collapse;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .sudoku-board td {
+    width: 40px;
+    height: 40px;
+    background-color: #fdf1db;
+    border: 1px solid #a39485;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #a39485; /* Standard border for all sides */
+  }
+
+  /* Add thicker borders for the 3x3 subgrids */
+/* Right border for the 3rd and 6th cell of each row */
+.sudoku-board tr td:nth-child(3),
+.sudoku-board tr td:nth-child(6) {
+    border-right: 3px solid #333; /* Thicker right border */
+}
+
+/* Bottom border for the 3rd and 6th row */
+.sudoku-board tr:nth-child(3) td,
+.sudoku-board tr:nth-child(6) td {
+    border-bottom: 3px solid #333; /* Thicker bottom border */
+}
+
+  .sudoku-board td.selected-cell {
+    background-color: #d0e1f9; /* A light blue to indicate selection */
+    border-color: #4285F4; /* A darker blue for the border to stand out */
+    box-shadow: inset 0 0 5px rgba(66, 133, 244, 0.5); /* A subtle glow effect */
+}
+  
+  .subgrid-border-right {
+    border-right: 3px solid #a39485;
+  }
+  
+  .subgrid-border-bottom {
+    border-bottom: 3px solid #a39485;
+  }
+  
+  #solveButton, #validateButton {
+    display: inline-block; /* Instead of block */
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold; /* Make the text a bit bolder */
+    color: #5d4037; /* Deep color for the text */
+    background-color: #ffe0b2; /* Light shade for the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  }
+  
+  #solveButton:hover, #validateButton:hover {
+    background-color: #ffcc80; /* A shade darker for hover state */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* More pronounced shadow for hover */
+  }
+  
+  #solveButton:active, #validateButton:active {
+    background-color: #ffb74d; /* Even darker for active/click */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Inner shadow for pressed effect */
+  }
+  
+  .difficulty-select, .button-group {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center; /* Centers the buttons in the flex container */
+    gap: 10px; /* Adds space between the buttons */
+  }
+  
+  .difficulty-select label {
+    margin-right: 10px;
+  }
+  
+  .difficulty-select select {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .number-buttons {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .number-buttons button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 2px solid #a39485; /* Slightly thicker border for definition */
+    border-radius: 5px;
+    background-color: #fdf1db;
+    color: #8c7a67; /* Darker color for better contrast */
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* subtle shadow for depth */
+  }
+  
+  .number-buttons button:hover {
+    background-color: #f3e0c9; /* Lighter color for hover state */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25); /* Slightly more pronounced shadow for hover */
+    transform: translateY(-2px); /* Slight raise effect */
+  }
+  
+  .number-buttons button.active, .number-buttons button:active {
+    background-color: #e0c9af; /* Even lighter color for active state */
+    color: #ffffff; /* White color text for better readability */
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3); /* Inward shadow for pressed effect */
+  }
+  
+  
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: none;
+    z-index: 1000;
+  }
+  
+  .toast.show {
+    display: block;
+    animation: fadeinout 4s;
+  }
+  
+  @keyframes fadeinout {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+  }
+  

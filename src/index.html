@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="game-container">
+  <div id="toast" class="toast"></div>
   <div class="difficulty-select">
     <label for="difficultySelect">Select Difficulty: </label>
     <select id="difficultySelect">
@@ -16,7 +17,15 @@
       <option value="hard">Hard</option>
     </select>
   </div>
-  <button id="solveButton">Solve Sudoku</button>
+  <div class="button-group">
+    <button id="solveButton">Solve Sudoku</button>
+    <button id="validateButton">Validate</button>
+  </div>
+  <div id="numberButtons" class="number-buttons">
+    <!-- Number buttons 1-9 -->
+    <!-- Clear button will have the value 'clear' -->
+    <!-- Dynamically generated in script.js -->
+  </div>
   <div id="sudokuBoard"></div>
 </div>
 <script src="script.js"></script>
