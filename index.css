@@ -1,0 +1,64 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('bg.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .game-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .sudoku-board {
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  
+  .sudoku-board td {
+    width: 40px;
+    height: 40px;
+    background-color: #fdf1db;
+    border: 1px solid #a39485;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .subgrid-border-right {
+    border-right: 3px solid #a39485;
+  }
+  
+  .subgrid-border-bottom {
+    border-bottom: 3px solid #a39485;
+  }
+  
+  #solveButton {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .difficulty-select {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .difficulty-select label {
+    margin-right: 10px;
+  }
+  
+  .difficulty-select select {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
