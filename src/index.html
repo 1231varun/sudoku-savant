@@ -2,32 +2,43 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sudoku Solver</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Play Sudoku Savant - Enhance your skills with varying difficulty levels from Easy to Master. Unlock your inner sudoku genius today!">
+<title>Sudoku Savant</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<div class="game-container">
-  <div id="toast" class="toast"></div>
-  <div class="difficulty-select">
-    <label for="difficultySelect">Select Difficulty: </label>
-    <select id="difficultySelect">
-      <option value="easy">Easy</option>
-      <option value="medium">Medium</option>
-      <option value="hard">Hard</option>
-    </select>
+  <div class="display-flex flex-direction-column">
+    <div class="logo-container">
+      <div class="logo">Sudoku Savant</div>
+      <div class="slogan">Unlock Your Inner Sudoku Genius</div>
+    </div>
+    <div class="game-container">
+      <div id="toast" class="toast"></div>
+      <div class="difficulty-select">
+        <label for="difficultySelect" class="select-difficulty-label">Select Difficulty: </label>
+        <select id="difficultySelect" class="select-difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+          <option value="expert">Expert</option>
+          <option value="master">Master</option>
+        </select>
+      </div>
+      <div class="button-group">
+        <button id="newBoardButton" class="sudoku-solver-action-button">New Board</button>
+        <button id="validateButton" class="sudoku-solver-action-button">Validate</button>
+      </div>
+      <div id="numberButtons" class="number-buttons">
+        <!-- Number buttons 1-9 -->
+        <!-- Clear button will have the value 'clear' -->
+        <!-- Dynamically generated in script.js -->
+      </div>
+      <div id="sudokuBoard"></div>
+    </div>
   </div>
-  <div class="button-group">
-    <button id="solveButton">Solve Sudoku</button>
-    <button id="validateButton">Validate</button>
-  </div>
-  <div id="numberButtons" class="number-buttons">
-    <!-- Number buttons 1-9 -->
-    <!-- Clear button will have the value 'clear' -->
-    <!-- Dynamically generated in script.js -->
-  </div>
-  <div id="sudokuBoard"></div>
-</div>
+
 <script src="script.js"></script>
 </body>
 </html>

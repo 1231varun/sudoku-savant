@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.logo-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+.logo {
+  font-family: 'Bangers', cursive;
+  font-size: larger;
+  font-weight: bolder;
+  font-size: calc(40px + 0.390625vw);
+  color: #7e1b1b;
+}
+
+.slogan {
+  font-family: 'Bangers', cursive;
+  font-size: small;
+  font-weight: 500;
+  font-size: calc(12px + 0.390625vw);
+  text-align: right;
+  color: #7e1b1b;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-image: url('assets/bg.jpg');
@@ -13,6 +38,7 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 10px;
+    margin: 10px;
   }
   
   .sudoku-board {
@@ -32,6 +58,12 @@ body {
     font-weight: bold;
     cursor: pointer;
     border: 1px solid #a39485; /* Standard border for all sides */
+  }
+
+  .sudoku-board td.non-editable {
+    background-color: #f3e9db; /* Subtle variation from the editable cells */
+    color: #5e503f; /* A darker brown that fits the color scheme */
+    font-weight: bold; /* Keep the text bold for better visibility */
   }
 
   /* Add thicker borders for the 3x3 subgrids */
@@ -61,7 +93,7 @@ body {
     border-bottom: 3px solid #a39485;
   }
   
-  #solveButton, #validateButton {
+  .sudoku-solver-action-button {
     display: inline-block; /* Instead of block */
     margin: 10px;
     padding: 10px 20px;
@@ -76,12 +108,12 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for depth */
   }
   
-  #solveButton:hover, #validateButton:hover {
+  .sudoku-solver-action-button:hover {
     background-color: #ffcc80; /* A shade darker for hover state */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* More pronounced shadow for hover */
   }
   
-  #solveButton:active, #validateButton:active {
+  .sudoku-solver-action-button:active {
     background-color: #ffb74d; /* Even darker for active/click */
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Inner shadow for pressed effect */
   }
@@ -114,7 +146,7 @@ body {
   }
   
   .number-buttons button {
-    margin: 0 5px;
+    margin: 5px 5px;
     padding: 10px 15px;
     font-size: 16px;
     border: 2px solid #a39485; /* Slightly thicker border for definition */
@@ -162,3 +194,64 @@ body {
     10%, 90% { opacity: 1; }
   }
   
+  .select-difficulty {
+    font-family: 'Arial', sans-serif;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #f7f1e3;
+    border: 1px solid #e2d2c3;
+    border-radius: 5px;
+    color: #5e503f;
+    font-size: 16px;
+  }
+  
+  .select-difficulty-label {
+    font-family: 'Arial', sans-serif;
+    color: #5e503f;
+    font-size: 16px;
+  }
+
+.display-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+  
+@media (max-width: 768px) {
+  .display-flex.flex-direction-column {
+    padding: 10px;
+  }
+
+  .logo {
+    font-size: calc(30px + 1.5vw);
+  }
+
+  .sudoku-board td {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .number-buttons button,
+  .select-difficulty {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+
+  .sudoku-solver-action-button {
+    margin: 0px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+
+  .button-group {
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
