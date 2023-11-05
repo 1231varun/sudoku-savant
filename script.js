@@ -254,7 +254,15 @@ function isBoardValid(board) {
 
 // This function add the selected number to the selected cell in the board
 function addNumberToBoard(number) {
-  if (typeof selectedRow === 'number' && typeof selectedCol === 'number') {
+  // Make sure a cell is selected and the number is within 1-9
+  if (typeof selectedRow === 'number' && typeof selectedCol === 'number' && number >= 1 && number <= 9) {
+    // Create the key string in the same format used by the handleOnKeyDownForKeyboardInput function
+    const cellKey = `${selectedRow}-${selectedCol}`;
+    
+    // Check if the cell is non-editable by seeing if the key is in the nonEditableCells Set
+    if (nonEditableCells.has(cellKey)) return; // Do not edit non-editable cells
+    
+    // Update the board array and display
     board[selectedRow][selectedCol] = number.toString();
     updateBoardDisplay(); // Update the display after adding the number
   }
