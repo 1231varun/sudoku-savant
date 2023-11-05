@@ -18,14 +18,14 @@
   font-family: 'Bangers', cursive;
   font-size: small;
   font-weight: 500;
-  font-size: calc(12px + 0.390625vw);
+  font-size: calc(8px + 0.390625vw);
   text-align: right;
   color: #7e1b1b;
 }
 
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('assets/bg.jpg');
+    background-image: url('bg.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
