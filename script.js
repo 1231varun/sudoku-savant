@@ -430,7 +430,6 @@ document.getElementById('cancelNewBoard').addEventListener('click', function() {
 });
 
 function showDialog() {
-  console.log("hi")
   document.getElementById('confirmationDialog').classList.replace('dialog-hidden', 'dialog-shown');
 }
 
