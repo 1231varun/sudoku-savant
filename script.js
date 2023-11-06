@@ -128,7 +128,6 @@ function generateNewBoard(difficulty, initial=false) {
   document.getElementById('sudokuBoard').innerHTML = generateBoardHTML(board, initial);
   makeCellsClickable();
   updateSelectedCell(0, 0);
-  enableBoard(); 
 }
 
 // Event listener for difficulty selection
@@ -421,6 +420,30 @@ function handleOnKeyDownForKeyboardInput(event) {
   event.preventDefault();
 }
 
+
+function newBoardButtonClickHanlder() {
+  showDialog();
+}
+
+document.getElementById('cancelNewBoard').addEventListener('click', function() {
+  hideDialog();
+});
+
+function showDialog() {
+  console.log("hi")
+  document.getElementById('confirmationDialog').classList.replace('dialog-hidden', 'dialog-shown');
+}
+
+function hideDialog() {
+  document.getElementById('confirmationDialog').classList.replace('dialog-shown', 'dialog-hidden');
+}
+
+document.getElementById('confirmNewBoard').addEventListener('click', function() {
+  const difficulty = difficultySelect.value;
+  hideDialog();
+  generateNewBoard(difficulty, true);  // Generate a new board
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   initializeNumberButtons();
   document.getElementById('validateButton').addEventListener('click', validateBoard);
@@ -434,7 +457,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const difficultySelect = document.getElementById('difficultySelect');
 
   newBoardButton.addEventListener('click', () => {
-    const difficulty = difficultySelect.value;
-    generateNewBoard(difficulty, true);  // Generate a new board
+    newBoardButtonClickHanlder();
   });
 });

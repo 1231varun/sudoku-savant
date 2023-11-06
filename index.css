@@ -264,3 +264,74 @@ body {
   margin: 10px 0;
   display: none;
 }
+
+#confirmationDialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+.dialog-content {
+  background: #fff8f0; /* light cream background, adjust as needed */
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* subtle shadow */
+}
+
+.dialog-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dialog-shown {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.dialog-message {
+  margin-bottom: 20px;
+  font-family: 'Bangers', cursive;
+  color: #7a4012;
+}
+
+.dialog-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-family: 'Bangers', cursive;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cancel {
+  background-color: #ba1111;
+}
+
+.cancel:hover {
+  background-color: #a31010;
+}
+
+.confirm {
+  background-color: #4CAF50;
+}
+
+.confirm:hover {
+  background-color: #3d9341; 
+}
+
+
+.dialog-button:focus {
+  outline: none;
+}
