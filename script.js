@@ -2,6 +2,7 @@
 let selectedRow, selectedCol;
 let nonEditableCells = new Set();
 let board = [];
+let currentSolution;
 /**
  * Helper function to check during Sudoku-solving process whether it is
  * valid to place a certain number in a specific cell,
@@ -123,8 +124,10 @@ function shuffleArray(array) {
   }
 }
 
-function generateNewBoard(difficulty, initial=false) {
-  board = generatePuzzle(generateSolvedBoard(), difficulty);
+function generateNewBoard(difficulty, initial = false) {
+  let solvedBoard = generateSolvedBoard();
+  currentSolution = solvedBoard; // Store the solved board as the current solution
+  board = generatePuzzle(solvedBoard, difficulty); // Generate a puzzle from the solved board
   document.getElementById('sudokuBoard').innerHTML = generateBoardHTML(board, initial);
   makeCellsClickable();
   updateSelectedCell(0, 0);
@@ -161,6 +164,18 @@ function clearSelectedCell() {
   }
 }
 
+// Function to check if the user's solution is correct by comparing it to the stored solution
+function isSolutionCorrect(userBoard, solutionBoard) {
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      if (userBoard[i][j] !== solutionBoard[i][j] && userBoard[i][j] !== '.') {
+        return false; // The user's solution does not match the stored solution
+      }
+    }
+  }
+  return true; // The user's solution matches the stored solution
+}
+
 // Validate current state of the board and check for win condition
 function validateBoard() {
   // First, check if the board is in a valid state
@@ -172,7 +187,7 @@ function validateBoard() {
   }
 
   // If the board is valid, check for the win condition (board completeness)
-  if (isBoardComplete(board)) {
+  if (isBoardComplete(board) && isSolutionCorrect(board, currentSolution)) {
     showToast("Congratulations! You've solved the puzzle!", "success");
     // Show the winner message
     document.getElementById('winnerMessage').style.display = 'block';
@@ -430,7 +445,6 @@ document.getElementById('cancelNewBoard').addEventListener('click', function() {
 });
 
 function showDialog() {
-  console.log("hi")
   document.getElementById('confirmationDialog').classList.replace('dialog-hidden', 'dialog-shown');
 }
 
@@ -454,7 +468,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', handleArrowKeyNavigation); // Allow keyboard input for arrow nav
 
   const newBoardButton = document.getElementById('newBoardButton');
-  const difficultySelect = document.getElementById('difficultySelect');
 
   newBoardButton.addEventListener('click', () => {
     newBoardButtonClickHanlder();
