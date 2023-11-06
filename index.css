@@ -255,3 +255,12 @@ body {
   }
 
 }
+
+.winner-message {
+  font-family: 'Bangers', cursive;
+  color: #4CAF50;
+  font-size: calc(20px + 0.390625vw);
+  text-align: center;
+  margin: 10px 0;
+  display: none;
+}

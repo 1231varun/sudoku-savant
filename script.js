@@ -128,6 +128,7 @@ function generateNewBoard(difficulty, initial=false) {
   document.getElementById('sudokuBoard').innerHTML = generateBoardHTML(board, initial);
   makeCellsClickable();
   updateSelectedCell(0, 0);
+  enableBoard(); 
 }
 
 // Event listener for difficulty selection
@@ -161,14 +162,39 @@ function clearSelectedCell() {
   }
 }
 
-// Validate current state of the board
+// Validate current state of the board and check for win condition
 function validateBoard() {
-  // You will need to implement a validation function
-  if (isBoardValid(board)) {
-    showToast("The board is valid!", "success");
-  } else {
+  // First, check if the board is in a valid state
+  if (!isBoardValid(board)) {
+    // Adding these duplicate statements for now until I can figure out a way to disable cells when won
+    document.getElementById('winnerMessage').style.display = 'none';
     showToast("The board is invalid or incomplete.", "error");
+    return; // Exit the function if the board is invalid
   }
+
+  // If the board is valid, check for the win condition (board completeness)
+  if (isBoardComplete(board)) {
+    showToast("Congratulations! You've solved the puzzle!", "success");
+    // Show the winner message
+    document.getElementById('winnerMessage').style.display = 'block';
+  } else {
+     // Adding these duplicate statements for now until I can figure out a way to disable cells when won
+    document.getElementById('winnerMessage').style.display = 'none';
+    showToast("The board is valid, but not yet complete. Keep going!", "info");
+  }
+}
+
+// Check if the board is completely filled with no empty cells
+function isBoardComplete(board) {
+  for (let row = 0; row < board.length; row++) {
+    for (let col = 0; col < board[row].length; col++) {
+      // Assuming empty cells are denoted by '.' or '0'
+      if (board[row][col] === '.' || board[row][col] === '0') {
+        return false; // Found an empty cell, so the board is not complete
+      }
+    }
+  }
+  return true; // No empty cells found, the board is complete
 }
 
 // Toast message for validation
